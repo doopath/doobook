@@ -259,6 +259,72 @@ a:hover {
   margin-top: -30px;
   cursor: pointer; }
 
+.review__image__container {
+  height: 800px;
+  overflow: hidden;
+  border: 2px solid #ebfbb2;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px; }
+
+.review__image {
+  width: 100%;
+  border-radius: 2px;
+  height: auto; }
+
+.view-full-image {
+  width: 100%;
+  height: 80px;
+  border: 2px solid #ebfbb2;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: 0px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 100; }
+
+.view-full-image p {
+  color: #ebfbb2;
+  font-size: 30px;
+  line-height: 80px; }
+
+.review__time,
+.review__rating,
+.review__communication-rating,
+.review__time-rating,
+.review__client-name,
+.review__executor,
+.review__price,
+.review__recommendation,
+.review__executor-key {
+  font-size: 25px;
+  color: #458588; }
+
+.review__time span,
+.review__rating span,
+.review__communication-rating span,
+.review__time-rating span,
+.review__client-name span,
+.review__executor span,
+.review__price span,
+.review__recommendation span,
+.review__executor-key span {
+  color: #689d6a; }
+
+.review__recommendation {
+  margin-bottom: 20px; }
+
+.review__comment {
+  display: block;
+  color: #d79921;
+  font-size: 25px;
+  margin-bottom: 10px; }
+
+.review__text {
+  font-size: 22px;
+  color: #98971a;
+  margin-bottom: 30px; }
+
 .footer {
   width: 100%;
   height: auto;
@@ -376,3 +442,165 @@ a:hover {
 @media (max-width: 390px) {
   .footer__info {
     margin-left: -5px; } }
+
+@media (max-width: 1660px) {
+  .works__container {
+    grid-template-columns: 1fr 1fr; }
+  #profile__name {
+    font-size: 30px; } }
+
+@media (max-width: 1440px) {
+  .profile__key,
+  .profile__name,
+  .profile__age,
+  .profile__date-creation,
+  .profile__reviews-number,
+  .profile__link-list,
+  .profile__rating {
+    font-size: 20px; }
+  #profile__name {
+    font-size: 23px; }
+  .profile__image,
+  .profile__image__item {
+    width: 100px;
+    height: 100px; }
+  .work__title {
+    font-size: 18px; }
+  .work__image__container {
+    height: auto; } }
+
+@media (max-width: 1025px) {
+  #profile__name {
+    font-size: 19px;
+    margin-bottom: 0px; }
+  .profile__image {
+    margin-top: -30px; }
+  .profile__key,
+  .profile__name,
+  .profile__age,
+  .profile__date-creation,
+  .profile__reviews-number,
+  .profile__link-list,
+  .profile__rating {
+    font-size: 16px; } }
+
+@media (max-width: 900px) {
+  .works__container {
+    grid-template-columns: 1fr; }
+  .profile__image,
+  .profile__image__item {
+    width: 50px;
+    height: 50px; }
+  .profile__key,
+  .profile__name,
+  .profile__age,
+  .profile__date-creation,
+  .profile__reviews-number,
+  .profile__link-list,
+  .profile__rating {
+    font-size: 14px; }
+  #profile__name {
+    font-size: 16px; } }
+
+@media (max-width: 580px) {
+  .profile__link-list {
+    line-height: 18px;
+    font-size: 12px; }
+  #profile__name {
+    font-size: 14px; }
+  .profile__image {
+    margin-top: -25px; }
+  .profile__image,
+  .profile__image__item {
+    width: 40px;
+    height: 40px; } }
+
+@media (max-width: 490px) {
+  .work__text {
+    font-size: 15px; }
+  .separator {
+    margin: 20px auto; }
+  #profile__name {
+    font-size: 12px; }
+  .profile__image {
+    margin-top: -25;
+    margin-right: -10px; }
+  .profile__link-list a {
+    display: block;
+    width: 80%;
+    height: 15px;
+    overflow: hidden; }
+  .profile__key,
+  .profile__name,
+  .profile__age,
+  .profile__date-creation,
+  .profile__reviews-number,
+  .profile__link-list,
+  .profile__rating {
+    font-size: 12px; }
+  #profile__name {
+    font-size: 10px; } }
+
+@media (max-width: 1024px) {
+  .review__text {
+    font-size: 16px; }
+  .review__time,
+  .review__rating,
+  .review__communication-rating,
+  .review__time-rating,
+  .review__client-name,
+  .review__executor,
+  .review__price,
+  .review__recommendation,
+  .review__executor-key {
+    font-size: 20px; } }
+
+@media (max-width: 768px) {
+  .review__image__container {
+    height: 601px; } }
+
+@media (max-width: 490px) {
+  .review__image__container {
+    height: 401px; }
+  .review__text {
+    font-size: 13px; }
+  .review__time,
+  .review__rating,
+  .review__communication-rating,
+  .review__time-rating,
+  .review__client-name,
+  .review__executor,
+  .review__price,
+  .review__recommendation {
+    font-size: 16px; }
+  .review__executor-key {
+    font-size: 12px; }
+    .review__executor-key span {
+      font-size: 16px; }
+  .view-full-image {
+    height: 40px; }
+    .view-full-image p {
+      font-size: 15px;
+      line-height: 40px; } }
+
+@media (max-width: 410px) {
+  .review__text {
+    font-size: 11px; }
+  #review__title {
+    font-size: 16px; }
+  .review__time,
+  .review__rating,
+  .review__communication-rating,
+  .review__time-rating,
+  .review__client-name,
+  .review__executor,
+  .review__price,
+  .review__recommendation {
+    font-size: 13px; }
+  .review__executor-key {
+    font-size: 10px; }
+    .review__executor-key span {
+      font-size: 13px; } }
+
+.full-image {
+  height: auto; }
