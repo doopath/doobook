@@ -1,0 +1,7 @@
+node_modules/
+gulpfile.js
+mygulp/
+package.json
+package-lock.json
+src/
+.vscode/
