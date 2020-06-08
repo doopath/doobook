@@ -28,11 +28,73 @@ $(document).ready(function() {
         $('.transform-block').css('width', '100%');
     });
 
+    //select image button
     $('.key__image').change(function() {
         if ($(this).val() != '') {
             $('.key__image__label').text("Chose one image");
         } else {
             $('.key__image__label').text("Choose an image");
         }
+    });
+
+    //checklist items and recommendations
+    $('.rating__list__item').on('mouseover', function(event) {
+        if ($(this).val() >= 8) {
+            $(this).prop('title', $(this).val() + '/10 very good =)');
+        }
+
+        if ($(this).val() >= 5 && $(this).val() < 8) {
+            $(this).prop('title', $(this).val() + '/10 so-so but ok =|');
+        }
+
+        if ($(this).val() >= 1 && $(this).val() < 5) {
+            $(this).prop('title', $(this).val() + '/10 bad! =(');
+        }
+
+    });
+
+    //change color and width for rating progress-bar
+    function ratingProgress(element, bar, val) {
+        if ($(element).val() >= 8) {
+            $(bar).css('background', '#68971a');
+            $(bar).css('width', $(element).val() + '0%');
+        }
+
+        if ($(element).val() >= 5 && $(element).val() < 8) {
+            $(bar).css('background', '#d79921');
+            $(bar).css('width', $(element).val() + '0%');
+        }
+
+        if ($(element).val() >= 1 && $(element).val() < 5) {
+            $(bar).css('background', '#cc241d');
+            $(bar).css('width', $(element).val() + '0%');
+        }
+        $(val).val($(element).val());
+    }
+
+    //change color and width when click on the element
+    $('.time-rating__list li').on('click', function(event) {
+        ratingProgress($(this), ".timings__progress", ".timings__input");
+    });
+
+    $('.quality-rating__list li').on('click', function(event) {
+        ratingProgress($(this), ".quality__progress", ".quality__input");
+    });
+
+    $('.communication-rating__list li').on('click', function(event) {
+        ratingProgress($(this), ".communication__progress", ".sociability__input");
+    });
+
+    //recommendation progress-bar changing
+    $('.rec').on('click', function(event) {
+        $('.rec__progress').css('left', '0');
+        $('.rec__progress').css('background', '#68971a');
+        $('.rec__input').val('rec');
+    });
+
+    $('.not-rec').on('click', function(event) {
+        $('.rec__progress').css('left', '50%');
+        $('.rec__progress').css('background', '#cc241d');
+        $('.rec__input').val('notrec');
     });
 });
