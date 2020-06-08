@@ -37,7 +37,7 @@ $(document).ready(function() {
         }
     });
 
-    //checklist items and recommendations
+    //checklist items and recommendations. Replacing a value of an input when click on checklist item.
     $('.rating__list__item').on('mouseover', function(event) {
         if ($(this).val() >= 8) {
             $(this).prop('title', $(this).val() + '/10 very good =)');
@@ -96,5 +96,30 @@ $(document).ready(function() {
         $('.rec__progress').css('left', '50%');
         $('.rec__progress').css('background', '#cc241d');
         $('.rec__input').val('notrec');
+    });
+
+    //popup-appeal
+    function popup(popup, close, curtain) {
+        $(popup).addClass('popup-open');
+        $(curtain).addClass('curtain-open');
+        $('body, html').css('overflow-y', 'hidden');
+        $(location).attr('href', '#header');
+
+        $(close).on('click', function(event) {
+            $(popup).removeClass('popup-open');
+            $(curtain).removeClass('curtain-open');
+            $('body, html').css('overflow-y', 'auto');
+        });
+
+        $(curtain).on('click', function(event) {
+            $(popup).removeClass('popup-open');
+            $(curtain).removeClass('curtain-open');
+            $('body, html').css('overflow-y', 'auto');
+        })
+    }
+
+    //appealing a popup
+    $('.popup-appeal').on('click', function(event) {
+        popup('.popup', '.popup__close', '.popup-curtain');
     });
 });
