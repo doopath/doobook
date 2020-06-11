@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Key extends Model
 {
@@ -21,4 +22,37 @@ class Key extends Model
         'reviews_count',
         'hash'
     ];
+
+    public function checkEmail()
+    {
+        $pos_email = DB::select('select email from userkeys where email = ?', [$this->email]);
+        
+        if ($pos_email == false)
+        {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public static function getHash($email) {
+        $pos_email = DB::select('select hash from userkeys where email = ?', [$email]);
+
+        if ($pos_email == false)
+        {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getMyHash()
+    {
+        return $this->hash;
+    }
 }

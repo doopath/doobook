@@ -674,6 +674,21 @@ a:hover {
     transition-duration: 0.15s;
 }
 
+// Errors list
+.errors_list {
+    width: 60%;
+    height: auto;
+    border: 2px solid #ebfbb2;
+    list-style-type: none;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    .errors_list__item {
+        color: #cc241d;
+        margin-bottom: 10px;
+    }
+}
+
 //=========================Footer Styles========================
 .footer {
     width: 100%;
@@ -1421,7 +1436,30 @@ a:hover {
     }
 }
 
-//WHAT A FUCK I DELETED THE FUCKING RESPONSIVE OF THE FUCKING PROFILE PAGE I DEFINITELY DID THIS WHEN WHY IS NOT EXIST IN FUCK THIS FILE
+@media(max-width: 1480px) {
+    .errors_list__item {
+        font-size: 11px;
+        margin-bottom: 5px;
+    }
+}
+
+@media(max-width: 950px) {
+    .errors_list {
+        width: 100%;
+        margin: 20px 0px;
+    }
+}
+
+@media(max-width: 430px) {
+    .errors_list {
+        padding: 10px;
+    }
+    .errors_list__item {
+        font-size: 8px;
+        margin-bottom: 0px;
+    }
+}
+
 // Top Secret
 .full-image {
     height: auto;
