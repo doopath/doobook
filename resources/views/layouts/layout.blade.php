@@ -25,10 +25,14 @@
         </ul>
       </div>
     </header>
+
+      <!-- Including popup-->
+        @yield('popup')
+
     <main class="main">
       <div class="main__container">
 
-        {{-- including content --}}
+      <!-- Including some content -->
         @yield('main')
         
       </div>
@@ -73,6 +77,7 @@
     </footer>
   </div>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  @yield('script')
   <script src="/js/script.js"></script>
 </body>
 
