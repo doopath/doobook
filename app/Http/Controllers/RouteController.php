@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Key;
 
 class RouteController extends Controller
 {
@@ -39,5 +40,15 @@ class RouteController extends Controller
   public function profile()
   {
     return view('profile');
+  }
+
+  public function findkey(Request $req)
+  {
+    $email = strval(strip_tags($req->input('email')));
+    $key = Key::getHash($email);
+
+    return view('findkey_output')->with([
+      'key' => $key
+    ]);
   }
 }

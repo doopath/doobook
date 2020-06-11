@@ -11,4 +11,5 @@ Route::get('/contacts', 'RouteController@contacts')->name('contacts');
 Route::get('/getkey', 'RouteController@getkey')->name('getkey');
 Route::get('/feedback', 'RouteController@feedback')->name('feedback');
 
+Route::post('/getkey/register/findkey', 'RouteController@findkey')->name('findkey');
 Route::post('/getkey/register', 'RegisterController@getkey')->name('getkey.register');

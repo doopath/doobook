@@ -40,7 +40,7 @@ class Key extends Model
         return $this->email;
     }
 
-    public static function getHash($email) {
+    public static function checkHash($email) {
         $pos_email = DB::select('select hash from userkeys where email = ?', [$email]);
 
         if ($pos_email == false)
@@ -54,5 +54,16 @@ class Key extends Model
     public function getMyHash()
     {
         return $this->hash;
+    }
+
+    public static function getHash($email)
+    {
+        $hash = DB::select('select hash from userkeys where email = ?', [$email]);
+        if ($hash == false)
+        {
+            return 'This email does not exists in the database';
+        } else {
+            return $hash[0]->hash;
+        }
     }
 }

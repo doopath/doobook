@@ -686,6 +686,11 @@ a:hover {
   margin-bottom: 10px;
 }
 
+.sup_sep {
+  position: absolute;
+  height: 100%;
+}
+
 .footer {
   width: 100%;
   height: auto;
@@ -700,10 +705,9 @@ a:hover {
   border: 2px solid #ebfbb2;
   border-bottom: 0px;
   border-radius: 5px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
   display: grid;
   grid-template: 1fr/1fr 1fr 1fr;
+  border-bottom: 2px solid #ebfbb2;
 }
 
 .footer__contacts__list {
@@ -811,6 +815,41 @@ a:hover {
   width: 85%;
   color: #bdae93;
   margin-bottom: 20px;
+}
+
+.redirect {
+  margin-top: 30px;
+}
+
+.mb {
+  margin-bottom: 20px;
+}
+
+.findkey__container {
+  width: 80%;
+  height: 50px;
+  display: grid;
+  grid-template: 1fr/7fr 3fr;
+  grid-gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.findkey__input {
+  height: 50px;
+  width: 100%;
+  display: block;
+  font-size: 20px;
+  border: 2px solid #ebfbb2;
+  border-radius: 5px;
+  color: #458588;
+  padding: 10px;
+}
+
+.findkey__submit {
+  grid-row: 1/2;
+  grid-column: 2/3;
+  justify-self: start;
 }
 
 @media (max-width: 700px) {
@@ -1550,6 +1589,44 @@ a:hover {
   .errors_list__item {
     font-size: 8px;
     margin-bottom: 0px;
+  }
+}
+
+@media (max-width: 1160px) {
+  .findkey__container {
+    width: 100%;
+    grid-template: 60px/6fr 4fr;
+  }
+
+  .findkey__input {
+    width: 100%;
+  }
+
+  .findkey__submit {
+    width: 100%;
+    justify-self: start;
+    align-self: start;
+    grid-row: 1/2 !important;
+  }
+}
+
+@media (max-width: 590px) {
+  .change {
+    font-size: 20px;
+  }
+
+  .findkey__container {
+    grid-template: 40px/6fr 4fr;
+  }
+
+  .findkey__input {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .findkey__submit {
+    font-size: 14px;
+    height: 40px;
   }
 }
 

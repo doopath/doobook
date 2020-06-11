@@ -60,7 +60,7 @@ class RegisterController extends Controller
             $key->save(); //save new key in the database
             return view('showkey')->with('key', $key->getMyHash()); //show hash of the key
         } else {
-            return view('findkey'); //view template
+            return view('findkey_input'); //view template
             die();
         }
     }
