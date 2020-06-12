@@ -137,6 +137,7 @@ a:hover {
   padding: 10px;
   border: 2px solid #ebfbb2;
   border-radius: 5px;
+  position: relative;
 }
 
 .executor__key,
@@ -162,6 +163,7 @@ a:hover {
   margin-top: 10px;
   list-style-type: none;
   line-height: 23px;
+  margin-bottom: 70px;
 }
 
 .executor__link-list a {
@@ -170,6 +172,15 @@ a:hover {
 
 .executor__link-list a li span {
   color: #689d6a;
+}
+
+.executor__more-reviews__container {
+  display: block;
+  position: absolute;
+  height: 34px;
+  margin-top: 10px;
+  bottom: 10px;
+  right: 10px;
 }
 
 .executor__more-reviews {
@@ -181,7 +192,6 @@ a:hover {
   color: #ebfbb2;
   font-size: 15px;
   cursor: pointer;
-  margin-top: 10px;
 }
 
 .profile__image {
@@ -195,6 +205,8 @@ a:hover {
 .profile__image__item {
   width: 200px;
   height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .profile__key,

@@ -14,37 +14,37 @@
 
     <h2 class="home__title" id="give-feedback__title">Fill out the feedback form</h2>
 
-    <form action="#" name="give-feedback" method="post" class="give-feedback__container">
+    <form action="{{ route('give.review') }}" name="give-feedback" method="post" class="give-feedback__container" enctype="multipart/form-data">
         @csrf
         <div class="give-feedback__key__container">
             <label for="give-feedback__key" class="input__label give-feedback__label">* Enter a key of an executor</label>
-            <input type="text" class="give-feedback__key" required id="give-feedback__key" placeholder="example: e01783d2ffa1f0c18e27301bb9eda676">
+            <input type="text" class="give-feedback__key" name="key" required id="give-feedback__key" placeholder="example: e01783d2ffa1f0c18e27301bb9eda676">
         </div>
 
         <div class="give-feedback__uname__container">
             <label for="give-feedback__uname" class="input__label give-feedback__label">* Enter your name</label>
-            <input type="text" class="give-feedback__uname" required id="give-feedback__uname" placeholder="example: John">
+            <input type="text" class="give-feedback__uname" name="name" required id="give-feedback__uname" placeholder="example: John">
         </div>
 
         <div class="give-feedback__sname__container">
             <label for="give-feedback__sname" class="input__label give-feedback__label">* Enter your surname</label>
-            <input type="text" class="give-feedback__sname" required id="give-feedback__sname" placeholder="example: Johnson">
+            <input type="text" class="give-feedback__sname" name="surname" required id="give-feedback__sname" placeholder="example: Johnson">
         </div>
 
         <div class="give-feedback__time__container">
             <label for="give-feedback__time" class="input__label give-feedback__label">* How many days have been spent?</label>
-            <input type="text" class="give-feedback__time" required id="give-feedback__time" placeholder="example: 7">
+            <input type="text" class="give-feedback__time" name="timeing" required id="give-feedback__time" placeholder="example: 7">
         </div>
 
         <div class="give-feedback__price__container">
             <label for="give-feedback__price" class="input__label give-feedback__label">* What is the price of work (usd)?</label>
-            <input type="text" class="give-feedback__price" required id="give-feedback__price" placeholder="example: 1000">
+            <input type="text" class="give-feedback__price" name="price" required id="give-feedback__price" placeholder="example: 1000">
         </div>
 
         <div class="give-feedback__image">
             <p class="input__label give-feedback__label">* Choose an image for your avatar</p>
             <label for="key__image" class="key__image__label">Choose an image</label>
-            <input type="file" class="key__image" name="key-image" required id="key__image" enctype="multipart/form-data" multiple>
+            <input type="file" class="key__image" name="image" required id="key__image" enctype="multipart/form-data" multiple>
         </div>
 
         <div class="give-feedback_rating time">
@@ -65,7 +65,7 @@
                 <span class="progress-passive__line"></span>
                 <span class="progress-active__line timings__progress"></span>
             </p>
-            <input type="text" name="recommend" value="" class="hide__input timings__input">
+            <input type="text" name="recommend" name="timings_rating" value="" class="hide__input timings__input">
         </div>
 
         <div class="give-feedback_rating quality">
@@ -86,7 +86,7 @@
                 <span class="progress-passive__line"></span>
                 <span class="progress-active__line quality__progress"></span>
             </p>
-            <input type="text" name="recommend" value="" class="hide__input quality__input">
+            <input type="text" name="recommend" name="quality_rating" value="" class="hide__input quality__input">
         </div>
 
         <div class="give-feedback_rating communication">
@@ -107,7 +107,7 @@
                 <span class="progress-passive__line"></span>
                 <span class="progress-active__line communication__progress"></span>
             </p>
-            <input type="text" name="recommend" value="" class="hide__input sociability__input">
+            <input type="text" name="recommend" name="sociability_rating" value="" class="hide__input sociability__input">
         </div>
 
         <div class="give-feedback__recommendation">
@@ -120,12 +120,12 @@
                 <span class="progress-passive__line"></span>
                 <span class="progress-active__line rec__progress"></span>
             </p>
-            <input type="text" name="recommend" class="hide__input rec__input">
+            <input type="text" name="recommend" name="recommendation" class="hide__input rec__input">
         </div>
 
         <div class="give-feedback__comment__container">
             <label for="give-feedback__comment" class="input__label give-feedback__label">* Your comment:</label>
-            <textarea name="give-feedback__comment" id="comment" id="give-feedback__comment" required class="give-feedback__comment" placeholder="Describe the process of working with the executor. Your experience can help other people." minlength="100"></textarea>
+            <textarea name="give-feedback__comment" id="comment" id="give-feedback__comment"  name="comment" required class="give-feedback__comment" placeholder="Describe the process of working with the executor. Your experience can help other people." minlength="100"></textarea>
         </div>
 
         <button class="give-feedback__submit" type="submit" name="give-feedback-btn">Give feedback</button>

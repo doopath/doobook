@@ -26,7 +26,7 @@ class RegisterController extends Controller
         // checking an image is exists
         if ($req->file('image') == null)
         {
-            $name = '/img/profile-image.png';
+            $name = 'profile-image.png';
         } else {
             $image = $req->file('image');
             $ext = $image->getClientOriginalExtension();
@@ -65,4 +65,8 @@ class RegisterController extends Controller
         }
     }
 
+    public function review(Request $req)
+    {
+        dd($req);
+    }
 }
