@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Key;
+use App\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;  //Database facaded
 
 class RouteController extends Controller
 {
@@ -54,13 +56,22 @@ class RouteController extends Controller
     {
         $hash = strval($hash);
         $user = Key::getUser($hash);
+        $reviews = Review::getAll($hash);
         return view('profile')->with([
-            'user' => $user[0]
+            'user' => $user[0],
+            'reviews' => $reviews
         ]);
     }
 
-    public function review()
+    public function review($key, $id)
     {
-        return view('review');
+        $review = DB::table('reviews')->where('key', '=', $key)->where('id', '=', $id)->get();
+        $executor_name = DB::table('userkeys')->where('hash', '=', $key)->get()[0]->name;
+        $executor_surname = DB::table('userkeys')->where('hash', '=', $key)->get()[0]->surname;
+        return view('review')->with([
+            'review' => $review[0],
+            'executor_name' => $executor_name,
+            'executor_surname' => $executor_surname
+        ]);
     }
 }

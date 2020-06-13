@@ -1,8 +1,8 @@
-@extends('layouts.layout') 
+@extends('layouts.layout')
 
 @section('title')
-    <?php echo 'DooBook'; ?> 
-@endsection 
+    <?php echo 'DooBook'; ?>
+@endsection
 
 @section('main')
     <h1 class="home__title">Hello Everyone!</h1>
@@ -15,7 +15,7 @@
     <h2 class="home__title" id="key__title">Get unique key</h2>
     <small class="war">*Before getting the key, fill out the form. <br> *You cannot change your profile in the future. <br> *Attention, the data will be displayed in your profile!</small>
 
-    @include('errors_list')
+    @include('layouts.errors_list')
 
     <form action="{{ route('getkey.register') }}" name="key" class="get_key" method="post" enctype="multipart/form-data">
         @csrf
@@ -58,4 +58,4 @@
 
         <button class="key__submit" type="submit" name="submit">Get key</button>
     </form>
-@endsection 
+@endsection

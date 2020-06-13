@@ -33,7 +33,7 @@
                         <li><span></span>{{ $user->link5 }}</li>
                     </a>
                 </ul>
-                <form action="/profile/{{ $user->hash }}" method="get" name="view-more" class="executor__more-reviews__container">
+                <form action="{{ route('profile', $user->hash) }}" method="get" name="view-more" class="executor__more-reviews__container">
                     <button type="submit" name="view-more-btn" class="executor__more-reviews">view reviews</button>
                 </form>
             </div>

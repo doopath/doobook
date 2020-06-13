@@ -159,6 +159,7 @@ $(document).ready(function () {
     }
 
     $(val).val($(element).val());
+    console.log($(val).val());
   } //change color and width when click on the element
 
 

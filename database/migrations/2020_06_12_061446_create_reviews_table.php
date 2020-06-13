@@ -15,21 +15,19 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            
+
             $table->string('author_name');
             $table->string('author_surname');
 
-            $table->string('executor_name');
-            $table->string('executor_surname');
-            $table->string('executor_key');
+            $table->string('key');
 
             $table->integer('time_spent');
             $table->integer('price');
 
             $table->string('recommendation');
-            $table->integer('main_rating');
-            $table->integer('time_spent_rating');
-            $table->integer('communication_rating');
+            $table->integer('quality_rating');
+            $table->integer('timings_rating');
+            $table->integer('sociability_rating');
 
             $table->text('comment');
 

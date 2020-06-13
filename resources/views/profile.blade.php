@@ -39,22 +39,21 @@
         <h1 class="home__title">Works</h1>
         <div class="works__container">
 
-            {{-- <div class="work">
+        @foreach ($reviews as $review)
+             <div class="work">
                 <p class="work__title">Responsive layout of the landing</p>
                 <div class="work__image__container">
-                    <img src="img/work-image.png" alt="image" class="work__image">
+                    <img src="/img/{{ $review->image }}" alt="image" class="work__image">
                 </div>
-                <p class="work__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui repellat quis veniam,
-                    consequatur velit sit necessitatibus possimus ea, suscipit, amet ducimus. Exercitationem perspiciatis
-                    voluptas quas reiciendis ipsum quia ex
-                    tempore.
+                <p class="work__text">{{ mb_strimwidth($review->comment, 0, 40). '...' }}
                 </p>
-                <p class="work__rating">Rating: 10/10</p>
-                <p class="work__date">Created 04.05.2020</p>
-                <form action="#" method="post">
+                <p class="work__rating">Rating: {{ ($review->timings_rating + $review->quality_rating + $review->sociability_rating) / 3 }}</p>
+                <p class="work__date">Created {{ $review->created_at }}</p>
+                <form action="{{ route('review', [$review->key, $review->id]) }}" method="get">
                     <button class="work__view">view</button>
                 </form>
-            </div> --}}
+            </div>
+        @endforeach
 
         </div>
     </div>

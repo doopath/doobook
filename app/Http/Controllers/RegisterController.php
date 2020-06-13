@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Key;
+use App\Review;
 
 class RegisterController extends Controller
 {
@@ -15,7 +16,7 @@ class RegisterController extends Controller
             'surname' => 'required|string|max:30',
             'age' => 'required|integer|max:101',
             'email' => 'required||max:80',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', //image validation
+            'image' => 'image|mimes:jpeg,png,jpg,svg,webp|max:2048', //image validation
             'link1' => 'max:90',
             'link2' => 'max:90',
             'link3' => 'max:90',
@@ -54,7 +55,7 @@ class RegisterController extends Controller
         //creating new key
         $key = new Key;
         $key->fill($attrs); //fill any properties of KeyClass
-        
+
         if($key->checkEmail() == true)
         {
             $key->save(); //save new key in the database
@@ -67,6 +68,43 @@ class RegisterController extends Controller
 
     public function review(Request $req)
     {
-        dd($req);
+        $validatedData = $req->validate([  //data validation for give to fill-method of the Review model
+            'name' => 'required|string|max:30',
+            'surname' => 'required|string|max:30',
+            'key' => 'required|string|max:35|exists:userkeys,hash',
+            'timing' => 'required|integer|max:3500',
+            'price' => 'required|integer',
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg,webp',
+            'timings_rating' => 'required|max:11|integer',
+            'quality_rating' => 'required|max:11|integer',
+            'sociability_rating' => 'required|max:11|integer',
+            'recommendation' => 'required|string|max:8',
+            'comment' => 'required|string|min:100|max:5000'
+        ]);
+
+        $image = $req->file('image');
+        $ext = $image->getClientOriginalExtension();
+        $destinationPath = public_path('/img');
+        $name = substr($image, 5, 100). '.'. $ext; //rename image
+        $image->move($destinationPath, $name); // move image to /public/img/image.ext
+
+        $attrs = array(
+            'author_name' => strval($req->get('name')),  //delete some html tags and convert value to string
+            'author_surname' => strval(strip_tags($req->get('surname'))),
+            'key' => strval($req->get('key')),
+            'time_spent' => intval($req->get('email')),
+            'image' => $name,
+            'price' => intval($req->get('price')),
+            'timings_rating' => intval($req->get('timings_rating')),
+            'quality_rating' => intval($req->get('quality_rating')),
+            'sociability_rating' => intval($req->get('sociability_rating')),
+            'recommendation' => strval($req->get('recommendation')),
+            'comment' => strval(strip_tags($req->get('comment')))
+        );
+
+        $review = new Review;
+        $review->fill($attrs);
+        $review->save();
+        return redirect()->route('home');
     }
 }
