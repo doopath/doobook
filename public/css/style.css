@@ -264,6 +264,7 @@ a:hover {
   padding: 10px;
   border: 2px solid #ebfbb2;
   border-radius: 5px;
+  padding-top: 25px;
 }
 
 .work__image__container {
@@ -286,10 +287,8 @@ a:hover {
 }
 
 .work__text {
-  font-size: 17px;
+  font-size: 15px;
   color: #98971a;
-  width: 100%;
-  word-wrap: break-word;
   margin-bottom: 14px;
 }
 
@@ -313,7 +312,7 @@ a:hover {
   color: #ebfbb2;
   font-size: 18px;
   float: right;
-  margin-top: -30px;
+  margin-top: 0px;
   cursor: pointer;
 }
 
@@ -390,6 +389,8 @@ a:hover {
   font-size: 22px;
   color: #98971a;
   margin-bottom: 30px;
+  width: 100%;
+  word-wrap: break-word;
 }
 
 #key__title {
@@ -1037,10 +1038,6 @@ a:hover {
   .work__title {
     font-size: 18px;
   }
-
-  .work__image__container {
-    height: auto;
-  }
 }
 
 @media (max-width: 1025px) {
@@ -1113,7 +1110,7 @@ a:hover {
 
 @media (max-width: 490px) {
   .work__text {
-    font-size: 15px;
+    font-size: 11px;
   }
 
   .separator {

@@ -3,12 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;  //Abstract model for extending
-use Illuminate\Support\Facades\DB;  //Database facaded
+use Illuminate\Support\Facades\DB;  //Database facade
+use App\Traits\getRating; //Use traits I think =)
 
 class Key extends Model
 {
+    use getRating;
+
     protected $table = 'userkeys';  //Set a table in the database
-    protected $fillable = [  //Create array for let the Mass Assignment
+    protected $fillable = [  //Create the array for let the Mass Assignment
         'name',
         'surname',
         'age',
@@ -42,7 +45,7 @@ class Key extends Model
     }
 
     //Check if exists this key-hash in the database
-    public static function checkHash($email)
+    public static function checkHash(string $email)
     {
         $pos_email = DB::select('select hash from userkeys where email = ?', [$email]);
 
@@ -60,7 +63,7 @@ class Key extends Model
     }
 
     // Get user's key-hash by email
-    public static function getHash($email)
+    public static function getHash(string $email)
     {
         $hash = DB::select('select hash from userkeys where email = ?', [$email]);
         if ($hash == false) {
@@ -71,15 +74,21 @@ class Key extends Model
     }
 
     // Select a number of keys from the database
-    public static function getKeys($count)
+    public static function getKeys(int $count)
     {
-        $users = DB::table('userkeys')->limit(10)->oldest('reviews_count')->take($count)->get();
+        $users = DB::table('userkeys')->limit(10)->latest('reviews_count')->take($count)->get();
         return $users;  //returning array $users which array[ object, object ...]
     }
 
-    public static function getUser($hash)
+    public static function getUser(string $hash)
     {
         $user = DB::table('userkeys')->where('hash', '=', $hash)->get();
         return $user;
+    }
+
+    public static function reviewsCountUpdate(string $hash)  //update reviews_count field in the database (userkeys->reviews_count row)
+    {
+        $reviews_count = DB::table('reviews')->where('key', '=', $hash)->count() + 1;  //increment data
+        DB::table('userkeys')->where('hash', '=', $hash)->update(['reviews_count' => $reviews_count]);  //update data
     }
 }

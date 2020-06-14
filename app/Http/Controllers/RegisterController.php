@@ -37,9 +37,9 @@ class RegisterController extends Controller
         }
 
         //put values in the req in an array
-        $attrs = array(
+        $attrs = array(  //There is data from the inputs (.blade.php template)
             'name' => strval(strip_tags($req->get('name'))),  //delete some html tags and convert value to string
-            'surname' => strval(strip_tags($req->get('surname'))),
+            'surname' => strval(strip_tags($req->get('surname'))),  
             'age' => strval(strip_tags($req->get('age'))),
             'email' => strval(strip_tags($req->get('email'))),
             'avatar' => $name,
@@ -69,7 +69,7 @@ class RegisterController extends Controller
     public function review(Request $req)
     {
         $validatedData = $req->validate([  //data validation for give to fill-method of the Review model
-            'name' => 'required|string|max:30',
+            'name' => 'required|string|max:30',  //There is data from the inputs (.blade.php template)
             'surname' => 'required|string|max:30',
             'key' => 'required|string|max:35|exists:userkeys,hash',
             'timing' => 'required|integer|max:3500',
@@ -102,9 +102,11 @@ class RegisterController extends Controller
             'comment' => strval(strip_tags($req->get('comment')))
         );
 
+        Key::reviewsCountUpdate($attrs['key']);  //update number of reviews
+
         $review = new Review;
-        $review->fill($attrs);
-        $review->save();
+        $review->fill($attrs); //fill properties of the class (Mass Assignment)
+        $review->save();  //save in the database
         return redirect()->route('home');
     }
 }

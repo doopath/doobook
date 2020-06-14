@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers;  //declaring the namespace
 
-use App\Key;
-use App\Review;
-use Illuminate\Http\Request;
+use App\Key;  //Model
+use App\Review;  //Model
+use Illuminate\Http\Request;  //Class for manipulate input data (GET, POST)
 use Illuminate\Support\Facades\DB;  //Database facaded
 
 class RouteController extends Controller
 {
+    //Template shows methods
+
     public function index()
     {
         return view('index');
@@ -34,6 +36,7 @@ class RouteController extends Controller
         return view('give_feedback');
     }
 
+    //Find a key if user forgot it
     public function findkey(Request $req)
     {
         $email = strval(strip_tags($req->input('email')));
@@ -44,30 +47,40 @@ class RouteController extends Controller
         ]);
     }
 
+    //Get any keys from the database (topkeys template)
     public function getKeys()
     {
         $users = Key::getKeys(10);
+
         return view('top_keys')->with([
             'users' => $users
         ]);
     }
 
+    //Show a profile of a key
     public function profile($hash)
     {
         $hash = strval($hash);
         $user = Key::getUser($hash);
         $reviews = Review::getAll($hash);
+        $reviews_count = Review::count($hash);
+        $rating = Key::getRating($hash);
+
         return view('profile')->with([
             'user' => $user[0],
-            'reviews' => $reviews
+            'reviews' => $reviews,
+            'reviews_count' => $reviews_count,
+            'rating' => $rating
         ]);
     }
 
+    //Show a review of a key (review/key/id template)
     public function review($key, $id)
     {
         $review = DB::table('reviews')->where('key', '=', $key)->where('id', '=', $id)->get();
         $executor_name = DB::table('userkeys')->where('hash', '=', $key)->get()[0]->name;
         $executor_surname = DB::table('userkeys')->where('hash', '=', $key)->get()[0]->surname;
+
         return view('review')->with([
             'review' => $review[0],
             'executor_name' => $executor_name,

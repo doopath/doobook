@@ -1,5 +1,10 @@
 @extends('layouts.layout')
 
+<?php
+    use App\Key;
+    $key = new Key;  //Creating object of the class Key
+?>
+
 @section('title')
     <?php echo 'DooBook'; ?>
 @endsection
@@ -15,7 +20,7 @@
                 <p class="executor__age"><span>Age: </span> {{ $user->age }} </p>
                 <p class="executor__date-creation"><span>Date of creation a key: </span>{{ $user->created_at }}</p>
                 <p class="executor__reviews-number"><span>Number of reviews: </span>{{ $user->reviews_count }}</p>
-                <p class="executor__rating"><span>Rating: </span>0</p> {{-- Create rating count function --}}
+                <p class="executor__rating"><span>Rating: </span>{{ $key->getRatings($user->hash) }}</p>
                 <ul class="executor__link-list">
                     <a href="#" class="executor__link">
                         <li><span></span>{{ $user->link1 }}</li>

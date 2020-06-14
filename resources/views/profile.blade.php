@@ -14,22 +14,22 @@
         <p class="profile__name"><span>Name:</span> {{ $user->name }} {{ $user->surname }}</p>
         <p class="profile__age"><span>Age:</span> 21</p>
         <p class="profile__date-creation"><span>Date of creation a key:</span> {{ $user->created_at }}</p>
-        <p class="profile__reviews-number"><span>Number of reviews:</span> {{ $user->reviews_count }}</p>
-        <p class="profile__rating"><span>Rating:</span> 0</p> {{-- Create rating count function --}}
+        <p class="profile__reviews-number"><span>Number of reviews:</span> {{ $reviews_count }}</p>
+        <p class="profile__rating"><span>Rating:</span> {{ $rating }}</p>
         <ul class="profile__link-list">
-            <a href="#" class="profile__link">
+            <a href="{{ $user->link1 }}" class="profile__link">
                 <li><span></span> {{ $user->link1 }}</li>
             </a>
-            <a href="#" class="profile__link">
+            <a href="{{ $user->link2 }}" class="profile__link">
                 <li><span></span> {{ $user->link2 }}</li>
             </a>
-            <a href="#" class="profile__link">
+            <a href="{{ $user->link3 }}" class="profile__link">
                 <li><span></span> {{ $user->link3 }}</li>
             </a>
-            <a href="#" class="profile__link">
+            <a href="{{ $user->link4 }}" class="profile__link">
                 <li><span></span> {{ $user->link4 }}</li>
             </a>
-            <a href="#" class="profile__link">
+            <a href="{{ $user->link5 }}" class="profile__link">
                 <li><span></span> {{ $user->link5 }}</li>
             </a>
         </ul>
@@ -39,9 +39,12 @@
         <h1 class="home__title">Works</h1>
         <div class="works__container">
 
+        @if (!isset($reviews[0]))
+            <p class="home__text">No reviews.</p>
+        @endif
+
         @foreach ($reviews as $review)
              <div class="work">
-                <p class="work__title">Responsive layout of the landing</p>
                 <div class="work__image__container">
                     <img src="/img/{{ $review->image }}" alt="image" class="work__image">
                 </div>
@@ -53,6 +56,7 @@
                     <button class="work__view">view</button>
                 </form>
             </div>
+
         @endforeach
 
         </div>
