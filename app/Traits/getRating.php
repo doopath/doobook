@@ -40,7 +40,7 @@ trait getRating  //Trait for Key model for getting rating and returning it
             $rating = $rating_sum / $rating_count;
         }
 
-        return $rating;
+        return substr($rating, 0, 3);
     }
 
     public static function getRating(string $hash)  //Getting rating from the database for specific person (profile template)
@@ -79,6 +79,6 @@ trait getRating  //Trait for Key model for getting rating and returning it
             $rating = $rating_sum / $rating_count;
         }
 
-        return $rating;
+        return substr($rating, 0, 3);
     }
 }  //Maybe this is closes bracket?

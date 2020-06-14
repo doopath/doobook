@@ -50,7 +50,7 @@
                 </div>
                 <p class="work__text">{{ mb_strimwidth($review->comment, 0, 40). '...' }}
                 </p>
-                <p class="work__rating">Rating: {{ ($review->timings_rating + $review->quality_rating + $review->sociability_rating) / 3 }}</p>
+                <p class="work__rating">Rating: {{ substr( (($review->timings_rating + $review->quality_rating + $review->sociability_rating) / 3), 0, 3) }}</p>
                 <p class="work__date">Created {{ $review->created_at }}</p>
                 <form action="{{ route('review', [$review->key, $review->id]) }}" method="get">
                     <button class="work__view">view</button>
